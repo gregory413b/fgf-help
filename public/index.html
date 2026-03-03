@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FG Funnels AI Assistant</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="header-inner">
+        <h1>FG Funnels AI Assistant</h1>
+        <p class="subtitle">Your expert guide to everything FG Funnels</p>
+        <div class="header-actions">
+          <button id="btn-new-chat" class="btn-secondary" onclick="clearChat()">New Chat</button>
+          <button id="btn-update" class="btn-secondary" onclick="checkForUpdates()">Check for Updates</button>
+          <button id="btn-stats" class="btn-ghost" onclick="showStats()">Stats</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="stats-panel" class="stats-panel hidden">
+        <div class="stats-content">
+          <button class="close-btn" onclick="hideStats()">&times;</button>
+          <h3>Database Stats</h3>
+          <div id="stats-body"></div>
+        </div>
+      </div>
+
+      <div id="update-banner" class="update-banner hidden">
+        <p id="update-message"></p>
+        <button onclick="hideUpdateBanner()">Dismiss</button>
+      </div>
+
+      <div id="chat-container" class="chat-container">
+        <div id="messages" class="messages">
+          <!-- Welcome screen shown initially -->
+          <div id="welcome-screen" class="welcome-screen">
+            <div class="welcome-avatar">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="12" fill="#6366f1"/>
+                <path d="M14 20c0-5.5 4.5-10 10-10s10 4.5 10 10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="19" cy="22" r="2" fill="#fff"/>
+                <circle cx="29" cy="22" r="2" fill="#fff"/>
+                <path d="M18 30c0 0 3 3 6 3s6-3 6-3" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h2>How can I help you with FG Funnels?</h2>
+            <p class="welcome-desc">Ask me anything about FG Funnels and I'll create a custom tutorial for you.</p>
+            <div class="suggestion-grid">
+              <button class="suggestion-card" onclick="askSuggestion('How do I set up Stripe payments?')">
+                <span class="suggestion-icon">&#128179;</span>
+                <span>Set up Stripe payments</span>
+              </button>
+              <button class="suggestion-card" onclick="askSuggestion('How do I connect my Google Calendar?')">
+                <span class="suggestion-icon">&#128197;</span>
+                <span>Connect Google Calendar</span>
+              </button>
+              <button class="suggestion-card" onclick="askSuggestion('How do I create an email campaign?')">
+                <span class="suggestion-icon">&#128232;</span>
+                <span>Create email campaigns</span>
+              </button>
+              <button class="suggestion-card" onclick="askSuggestion('How do I build a funnel?')">
+                <span class="suggestion-icon">&#127760;</span>
+                <span>Build a funnel</span>
+              </button>
+              <button class="suggestion-card" onclick="askSuggestion('How do I set up workflow automations?')">
+                <span class="suggestion-icon">&#9889;</span>
+                <span>Workflow automations</span>
+              </button>
+              <button class="suggestion-card" onclick="askSuggestion('How do I import contacts?')">
+                <span class="suggestion-icon">&#128101;</span>
+                <span>Import contacts</span>
+              </button>
+              <button class="suggestion-card" onclick="askSuggestion('How do I set up a membership site?')">
+                <span class="suggestion-icon">&#127891;</span>
+                <span>Membership sites</span>
+              </button>
+              <button class="suggestion-card" onclick="askSuggestion('How do I set up SMS messaging?')">
+                <span class="suggestion-icon">&#128172;</span>
+                <span>SMS messaging</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-area">
+          <div class="input-box">
+            <textarea id="chat-input" placeholder="Ask anything about FG Funnels..." rows="1"></textarea>
+            <button id="btn-send" onclick="sendMessage()" title="Send message">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+          </div>
+          <p class="input-hint">Press Enter to send, Shift+Enter for a new line</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Powered by data from <a href="https://support.fgfunnels.com" target="_blank">FG Funnels Support</a> &middot; AI-generated tutorials may need verification</p>
+    </footer>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
